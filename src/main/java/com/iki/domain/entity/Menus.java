@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +32,7 @@ public class Menus {
     private List<MenuOptions> menuOptionsList = new ArrayList<>();
 
     @Builder
-    public Menus(Long menusId, String menusName, int menusPrice, boolean soldOut){
-        this.menusId = menusId;
+    public Menus(String menusName, int menusPrice, boolean soldOut){
         this.menusName = menusName;
         this.menusPrice = menusPrice;
         this.soldOut = soldOut;
