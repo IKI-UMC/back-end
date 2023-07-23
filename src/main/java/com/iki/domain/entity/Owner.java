@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +41,7 @@ public class Owner extends BaseEntity {
     /* 포인트 적립은 보류 */
 
     @Builder
-    public Owner(Long ownerId, String ownerName, String shopName, String password) {
-        this.ownerId = ownerId;
+    public Owner(String ownerName, String shopName, String password) {
         this.ownerName = ownerName;
         this.shopName = shopName;
         this.password = password;
