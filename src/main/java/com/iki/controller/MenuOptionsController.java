@@ -6,6 +6,7 @@ import com.iki.domain.dto.MenuOptions.MenuOptionsSaveRequestDto;
 import com.iki.domain.dto.MenuOptions.MenuOptionsUpdateRequestDto;
 import com.iki.service.MenuOptionsService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@Log4j2
 public class MenuOptionsController extends BaseController {
     private final static int SUCCESS_CODE = 200;
     private final MenuOptionsService menuOptionsService;

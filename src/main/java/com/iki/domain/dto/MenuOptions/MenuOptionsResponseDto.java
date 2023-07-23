@@ -7,7 +7,7 @@ import lombok.Getter;
 public class MenuOptionsResponseDto {
     Long menuOptionsId;
     String menusName; // 무슨 메뉴의 옵션인지 알려줌
-    boolean isFixed;
+    boolean fixed;
     String menuOptionsCategory;
     String menuOptionsContents;
     int menuOptionsPrice;
@@ -15,7 +15,7 @@ public class MenuOptionsResponseDto {
     public MenuOptionsResponseDto(MenuOptions menuOptions) {
         this.menuOptionsId = menuOptions.getMenuOptionsId();
         this.menusName = menuOptions.getMenus().getMenusName();
-        this.isFixed = menuOptions.isFixed();
+        this.fixed = menuOptions.isFixed();
         this.menuOptionsCategory = menuOptions.getMenuOptionsCategory();
         this.menuOptionsContents = menuOptions.getMenuOptionsContents();
         this.menuOptionsPrice = menuOptions.getMenuOptionsPrice();

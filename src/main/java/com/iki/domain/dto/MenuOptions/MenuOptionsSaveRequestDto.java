@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MenuOptionsSaveRequestDto {
-    boolean isFixed;
+    boolean fixed;
     String menuOptionsCategory;
     String menuOptionsContents;
     int menuOptionsPrice;
 
     public MenuOptions toEntity() {
         return MenuOptions.builder()
-                .isFixed(isFixed)
+                .fixed(fixed)
                 .menuOptionsCategory(menuOptionsCategory)
                 .menuOptionsContents(menuOptionsContents)
                 .menuOptionsPrice(menuOptionsPrice)

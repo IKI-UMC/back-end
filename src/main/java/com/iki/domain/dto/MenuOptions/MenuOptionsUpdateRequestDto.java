@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MenuOptionsUpdateRequestDto {
-    boolean isFixed;
+    boolean fixed;
     String menuOptionsCategory;
     String menuOptionsContents;
     int menuOptionsPrice;

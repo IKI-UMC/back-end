@@ -1,9 +1,7 @@
 package com.iki.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
@@ -18,7 +16,7 @@ public class MenuOptions {
     private Menus menus;
 
     @Column
-    private boolean isFixed;
+    private boolean fixed;
 
     @Column
     private String menuOptionsCategory;
@@ -30,16 +28,15 @@ public class MenuOptions {
     private int menuOptionsPrice;
 
     @Builder
-    public MenuOptions(Long menuOptionsId, boolean isFixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
-        this.menuOptionsId = menuOptionsId;
-        this.isFixed = isFixed;
+    public MenuOptions(boolean fixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
+        this.fixed = fixed;
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
     }
 
-    public MenuOptions update(boolean isFixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
-        this.isFixed = isFixed;
+    public MenuOptions update(boolean fixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
+        this.fixed = fixed;
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
