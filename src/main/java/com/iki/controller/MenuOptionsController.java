@@ -40,20 +40,6 @@ public class MenuOptionsController extends BaseController {
         return sendResponseHttpByJson(SUCCESS_CODE, "All Options loaded", responseDtoList);
     }
 
-    @GetMapping("api/v1/menuoptions/fixed/{menusId}")
-    public ResponseEntity<ResponseApiMessage> findFixedOptions(@PathVariable Long menusId) {
-        List<MenuOptionsResponseDto> responseDtoList = menuOptionsService.findFixedOptions(menusId);
-
-        return sendResponseHttpByJson(SUCCESS_CODE, "All Fixed Options loaded", responseDtoList);
-    }
-
-    @GetMapping("api/v1/menuoptions/notfixed/{menusId}")
-    public ResponseEntity<ResponseApiMessage> findNotFixedOptions(@PathVariable Long menusId) {
-        List<MenuOptionsResponseDto> responseDtoList = menuOptionsService.findNotFixedOptions(menusId);
-
-        return sendResponseHttpByJson(SUCCESS_CODE, "All Non-fixed Options loaded", responseDtoList);
-    }
-
     @PutMapping("api/v1/menuoptions/{menuOptionsId}")
     public ResponseEntity<ResponseApiMessage> update(@PathVariable Long menuOptionsId, @RequestBody MenuOptionsUpdateRequestDto requestDto) {
         MenuOptionsResponseDto responseDto = menuOptionsService.update(menuOptionsId, requestDto);

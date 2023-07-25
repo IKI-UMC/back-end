@@ -59,40 +59,11 @@ public class MenuOptionsService {
         return menuOptionsResponseDtoList;
     }
 
-
-    public List<MenuOptionsResponseDto> findFixedOptions(Long menusId) {
-        List<MenuOptionsResponseDto> menuOptionsResponseDtoList = new ArrayList<>();
-        Menus menus = findMenus(menusId);
-        List<MenuOptions> menuOptionsList = menus.getMenuOptionsList();
-
-        for(MenuOptions menuOptions : menuOptionsList) {
-            if (menuOptions.isFixed()) {
-                menuOptionsResponseDtoList.add(new MenuOptionsResponseDto(menuOptions));
-            }
-        }
-
-        return menuOptionsResponseDtoList;
-    }
-
-    public List<MenuOptionsResponseDto> findNotFixedOptions(Long menusId) {
-        List<MenuOptionsResponseDto> menuOptionsResponseDtoList = new ArrayList<>();
-        Menus menus = findMenus(menusId);
-        List<MenuOptions> menuOptionsList = menus.getMenuOptionsList();
-
-        for(MenuOptions menuOptions : menuOptionsList) {
-            if (!menuOptions.isFixed()) {
-                menuOptionsResponseDtoList.add(new MenuOptionsResponseDto(menuOptions));
-            }
-        }
-
-        return menuOptionsResponseDtoList;
-    }
-
     @Transactional
     public MenuOptionsResponseDto update(Long menuOptionsId, MenuOptionsUpdateRequestDto requestDto) {
         MenuOptions menuOptions = findMenuOptions(menuOptionsId);
 
-        menuOptions.update(requestDto.isFixed(), requestDto.getMenuOptionsCategory(), requestDto.getMenuOptionsContents(), requestDto.getMenuOptionsPrice());
+        menuOptions.update(requestDto.getMenuOptionsCategory(), requestDto.getMenuOptionsContents(), requestDto.getMenuOptionsPrice());
 
         return findById(menuOptionsId);
     }
