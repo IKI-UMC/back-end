@@ -16,9 +16,6 @@ public class MenuOptions {
     private Menus menus;
 
     @Column
-    private boolean fixed;
-
-    @Column
     private String menuOptionsCategory;
 
     @Column
@@ -28,15 +25,13 @@ public class MenuOptions {
     private int menuOptionsPrice;
 
     @Builder
-    public MenuOptions(boolean fixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
-        this.fixed = fixed;
+    public MenuOptions(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
     }
 
-    public MenuOptions update(boolean fixed, String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
-        this.fixed = fixed;
+    public MenuOptions update(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
