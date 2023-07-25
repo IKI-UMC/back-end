@@ -18,9 +18,9 @@ public class CartController extends BaseController {
     // 메뉴 한번 클릭 될 때마다 호출
     @PostMapping("/api/v1/cart/")
     public ResponseEntity<ResponseApiMessage> addCart(@RequestBody CartSaveRequestDto requestDto) {
-        CartResponseDto responseDto = cartService.save(requestDto);
+        Long cartId = cartService.save(requestDto);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Add to Cart", responseDto);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Add in Cart", cartId);
     }
 
     @GetMapping("/api/v1/cart/{orderUsersId}")

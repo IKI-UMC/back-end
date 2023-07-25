@@ -17,24 +17,24 @@ public class OrderMenuController extends BaseController {
     private final static int SUCCESS_CODE = 200;
     private final OrderMenuService orderMenuService;
 
-    @PutMapping("/api/v1/orderMenu/{orderUsersId}/{orderMenuId}/addAmount")
-    public ResponseEntity<ResponseApiMessage> addOrderMenuAmount(@PathVariable Long orderUsersId, @PathVariable Long orderMenuId) {
-        CartResponseDto responseDto = orderMenuService.addOrderMenu(orderUsersId, orderMenuId);
+    @PutMapping("/api/v1/orderMenu/{orderMenuId}/addAmount")
+    public ResponseEntity<ResponseApiMessage> addOrderMenuAmount(@PathVariable Long orderMenuId) {
+        orderMenuService.addOrderMenu(orderMenuId);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Add menu amount", responseDto);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Add menu amount", orderMenuId);
     }
 
-    @PutMapping("/api/v1/orderMenu/{orderUsersId}/{orderMenuId}/minusAmount")
-    public ResponseEntity<ResponseApiMessage> minusOrderMenuAmount(@PathVariable Long orderUsersId, @PathVariable Long orderMenuId) {
-        CartResponseDto responseDto = orderMenuService.minusOrderMenu(orderUsersId, orderMenuId);
+    @PutMapping("/api/v1/orderMenu/{orderMenuId}/minusAmount")
+    public ResponseEntity<ResponseApiMessage> minusOrderMenuAmount( @PathVariable Long orderMenuId) {
+        orderMenuService.minusOrderMenu(orderMenuId);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Minus menu amount", responseDto);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Minus menu amount", orderMenuId);
     }
 
-    @DeleteMapping("/api/v1/orderMenu/{orderUsersId}/{orderMenuId}")
-    public ResponseEntity<ResponseApiMessage> deleteOrderMenu(@PathVariable Long orderUsersId, @PathVariable Long orderMenuId) {
-        CartResponseDto responseDto = orderMenuService.delete(orderUsersId, orderMenuId);
+    @DeleteMapping("/api/v1/orderMenu/{orderMenuId}")
+    public ResponseEntity<ResponseApiMessage> deleteOrderMenu(@PathVariable Long orderMenuId) {
+        Long id = orderMenuService.delete(orderMenuId);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Delete order menu", responseDto);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Delete order menu", id);
     }
 }

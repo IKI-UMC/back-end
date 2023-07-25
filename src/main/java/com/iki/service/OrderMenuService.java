@@ -1,7 +1,5 @@
 package com.iki.service;
 
-import com.iki.domain.dto.Cart.CartResponseDto;
-import com.iki.domain.dto.OrderMenuResponseDto;
 import com.iki.domain.entity.*;
 import com.iki.repository.MenuOptionsRepository;
 import com.iki.repository.MenusRepository;
@@ -10,17 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RequiredArgsConstructor
 @Service
 public class OrderMenuService {
     private final MenusRepository menusRepository;
     private final MenuOptionsRepository menuOptionsRepository;
     private final OrderMenuRepository orderMenuRepository;
-
-    private final OrderUsersService orderUsersService;
 
 
     private Menus findMenus(Long menusId) {
@@ -36,10 +29,6 @@ public class OrderMenuService {
     private OrderMenu findOrderMenu(Long orderMenuId) {
         return orderMenuRepository.findById(orderMenuId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 주문 메뉴가 없습니다. ORDER_MENU_ID=" + orderMenuId));
-    }
-
-    private OrderUsers findOrderUsers(Long orderUsersId) {
-        return orderUsersService.findById(orderUsersId);
     }
 
     @Transactional
@@ -69,64 +58,28 @@ public class OrderMenuService {
     }
 
     @Transactional
-    public CartResponseDto addOrderMenu(Long orderUsersId, Long orderMenuId) {
+    public void addOrderMenu(Long orderMenuId) {
         OrderMenu orderMenu = findOrderMenu(orderMenuId);
 
         orderMenu.addAmount();
-
-        return getCartResponseDto(orderUsersId);
     }
 
     @Transactional
-    public CartResponseDto minusOrderMenu(Long orderUsersId, Long orderMenuId) {
+    public void minusOrderMenu(Long orderMenuId) {
         OrderMenu orderMenu = findOrderMenu(orderMenuId);
 
         orderMenu.minusAmount();
-
-        return getCartResponseDto(orderUsersId);
     }
 
     @Transactional
-    public CartResponseDto delete(Long orderUsersId, Long orderMenuId) {
+    public Long delete(Long orderMenuId) {
         OrderMenu orderMenu = findOrderMenu(orderMenuId);
+
+        orderMenu.getCart().minusPrice(orderMenu.getPrice());
+        orderMenu.getCart().minusAmount(orderMenu.getAmount());
 
         orderMenuRepository.delete(orderMenu);
 
-        return getCartResponseDto(orderUsersId);
-    }
-
-    public CartResponseDto getCartResponseDto(Long orderUsersId) {
-        OrderUsers users = findOrderUsers(orderUsersId);
-        Cart cart = users.getCart();
-        List<OrderMenu> menus = cart.getMenus();
-        List<OrderMenuResponseDto> menuResponseDtoList = new ArrayList<>();
-
-        // 장바구니에 있는 메뉴 개수 만큼 OrderMenuResponseDto 만들어서 넣기
-        for (OrderMenu orderMenu : menus) {
-            List<String> orderMenuOptions = getOrderMenuOptions(orderMenu.getOptionsList());
-            OrderMenuResponseDto responseDto = OrderMenuResponseDto.builder()
-                    .orderMenuOptions(orderMenuOptions)
-                    .orderMenu(orderMenu)
-                    .build();
-
-            menuResponseDtoList.add(responseDto);
-        }
-
-        return CartResponseDto.builder()
-                .orderMenuResponseDtoList(menuResponseDtoList)
-                .users(users)
-                .build();
-    }
-
-    public List<String> getOrderMenuOptions(String options) {
-        String[] optionsIds = options.split(",");
-        List<String> optionsNames = new ArrayList<>();
-
-        for (String option : optionsIds) {
-            Long optionsId = Long.parseLong(option);
-            optionsNames.add(findMenuOptions(optionsId).getMenuOptionsContents());
-        }
-
-        return optionsNames;
+        return orderMenuId;
     }
 }

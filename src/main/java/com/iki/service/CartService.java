@@ -45,7 +45,7 @@ public class CartService {
 
     // 메뉴 클릭할 때마다 호출된다.
     @Transactional
-    public CartResponseDto save(CartSaveRequestDto requestDto) {
+    public Long save(CartSaveRequestDto requestDto) {
         Cart cart;
         OrderUsers orderUsers;
 
@@ -62,7 +62,7 @@ public class CartService {
         OrderMenu orderMenu = orderMenuService.getOrderMenu(requestDto.getMenusId(), requestDto.getMenusOptions(), cart);
         cart.addMenus(orderMenu);
 
-        return getCartResponseDto(orderUsers.getOrderUsersId());
+        return cart.getCartId();
     }
 
     public CartResponseDto getCartResponseDto(Long orderUsersId) {
@@ -84,6 +84,7 @@ public class CartService {
 
         return CartResponseDto.builder()
                 .orderMenuResponseDtoList(menuResponseDtoList)
+                .cart(cart)
                 .users(users)
                 .build();
     }
