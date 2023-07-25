@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class MenusResponseDto {
     Long menusId;
-    String menuCategory;
+    String menusCategory;
     String menusName;
     int menusPrice;
     boolean soldOut;
@@ -21,7 +21,7 @@ public class MenusResponseDto {
 
     public MenusResponseDto(Menus menus) {
         this.menusId = menus.getMenusId();
-        this.menuCategory = menus.getMenuCategory();
+        this.menusCategory = menus.getMenusCategory();
         this.menusName = menus.getMenusName();
         this.menusPrice = menus.getMenusPrice();
         this.soldOut = menus.isSoldOut();
