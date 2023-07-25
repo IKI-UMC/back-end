@@ -62,10 +62,12 @@ public class CartService {
         OrderMenu orderMenu = orderMenuService.getOrderMenu(requestDto.getMenusId(), requestDto.getMenusOptions(), cart);
         cart.addMenus(orderMenu);
 
-        return getCartResponseDto(cart, orderUsers);
+        return getCartResponseDto(orderUsers.getOrderUsersId());
     }
 
-    public CartResponseDto getCartResponseDto(Cart cart, OrderUsers users) {
+    public CartResponseDto getCartResponseDto(Long orderUsersId) {
+        OrderUsers users = findOrderUsers(orderUsersId);
+        Cart cart = users.getCart();
         List<OrderMenu> menus = cart.getMenus();
         List<OrderMenuResponseDto> menuResponseDtoList = new ArrayList<>();
 
