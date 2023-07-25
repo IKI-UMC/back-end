@@ -38,12 +38,16 @@ public class OrderMenu {
     }
 
     public void addAmount() {
+        this.cart.addAmount(1);
+        this.cart.addPrice(price);
         this.amount++;
-        this.price = menus.getMenusPrice() * amount;
+        this.price = price * amount;
     }
 
     public void minusAmount() {
+        this.cart.minusAmount(1);
+        this.cart.minusPrice(price);
         this.amount--;
-        this.price = menus.getMenusPrice() * amount;
+        this.price = price * amount;
     }
 }

@@ -29,6 +29,24 @@ public class Cart {
     }
 
     public void addMenus(OrderMenu orderMenu) {
+        this.totalAmount += orderMenu.getAmount();
+        this.totalPrice += orderMenu.getPrice();
         this.menus.add(orderMenu);
+    }
+
+    public void addAmount(int amount) {
+        this.totalAmount -= amount;
+    }
+
+    public void addPrice(int price) {
+        this.totalPrice += price;
+    }
+
+    public void minusAmount(int amount) {
+        this.totalAmount -= amount;
+    }
+
+    public void minusPrice(int price) {
+        this.totalPrice -= price;
     }
 }

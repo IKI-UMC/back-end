@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter
 public class OrderMenuResponseDto {
+    Long orderMenuId;
     String orderMenuName;
     int orderMenuPrice;
     int orderMenuAmount;
@@ -15,6 +16,7 @@ public class OrderMenuResponseDto {
 
     @Builder
     public OrderMenuResponseDto(OrderMenu orderMenu, List<String> orderMenuOptions) {
+        this.orderMenuId = orderMenu.getOrderMenuId();
         this.orderMenuName = orderMenu.getMenus().getMenusName();
         this.orderMenuAmount = orderMenu.getAmount();
         this.orderMenuPrice = orderMenu.getPrice();
