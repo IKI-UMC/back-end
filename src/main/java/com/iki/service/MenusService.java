@@ -1,5 +1,6 @@
 package com.iki.service;
 
+import com.iki.domain.dto.MenuOptions.MenuOptionsSaveRequestDto;
 import com.iki.domain.dto.Menus.MenusResponseDto;
 import com.iki.domain.dto.Menus.MenusSaveRequestDto;
 import com.iki.domain.dto.Menus.MenusUpdateRequestDto;
@@ -21,6 +22,8 @@ public class MenusService {
     private final MenusRepository menusRepository;
     private final OwnerRepository ownerRepository;
 
+    private final MenuOptionsService menuOptionsService;
+
     public Menus findMenus(Long menuId) {
         return menusRepository.findById(menuId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 메뉴가 없습니다. MENU_ID=" + menuId));
@@ -38,7 +41,15 @@ public class MenusService {
         menus.addOwner(owner);
         owner.addMenus(menus);
 
-        return menusRepository.save(menus).getMenusId();
+        // 메뉴 저장
+        menusRepository.save(menus);
+
+        // 메뉴에 포함된 옵션 저장
+        for (MenuOptionsSaveRequestDto menuOptionsSaveRequestDto : requestDto.getMenuOptionsList()) {
+            menuOptionsService.save(menus.getMenusId(), menuOptionsSaveRequestDto);
+        }
+
+        return menus.getMenusId();
     }
 
     public MenusResponseDto findById(Long menusId) {
@@ -63,7 +74,7 @@ public class MenusService {
     public MenusResponseDto update(Long menusId, MenusUpdateRequestDto requestDto) {
         Menus menus = findMenus(menusId);
 
-        menus.update(requestDto.getMenusName(), requestDto.getMenusPrice(), requestDto.isSoldOut());
+        menus.update(requestDto.getMenuCategory(), requestDto.getMenusName(), requestDto.getMenusPrice(), requestDto.isSoldOut());
 
         return findById(menusId);
     }

@@ -15,6 +15,9 @@ public class Menus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menusId;
 
+    @Column
+    private String menuCategory;
+
     @ManyToOne
     @JoinColumn(name = "ownerId")
     private Owner owner;
@@ -32,13 +35,15 @@ public class Menus {
     private List<MenuOptions> menuOptionsList = new ArrayList<>();
 
     @Builder
-    public Menus(String menusName, int menusPrice, boolean soldOut){
+    public Menus(String menuCategory, String menusName, int menusPrice){
+        this.menuCategory = menuCategory;
         this.menusName = menusName;
         this.menusPrice = menusPrice;
-        this.soldOut = soldOut;
+        this.soldOut = false;
     }
 
-    public Menus update(String menusName, int menusPrice, boolean soldOut) {
+    public Menus update(String menuCategory, String menusName, int menusPrice, boolean soldOut) {
+        this.menuCategory = menuCategory;
         this.menusName = menusName;
         this.menusPrice = menusPrice;
         this.soldOut = soldOut;
