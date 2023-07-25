@@ -74,7 +74,7 @@ public class MenusService {
     public MenusResponseDto update(Long menusId, MenusUpdateRequestDto requestDto) {
         Menus menus = findMenus(menusId);
 
-        menus.update(requestDto.getMenuCategory(), requestDto.getMenusName(), requestDto.getMenusPrice(), requestDto.isSoldOut());
+        menus.update(requestDto.getMenusCategory(), requestDto.getMenusName(), requestDto.getMenusPrice(), requestDto.isSoldOut());
 
         return findById(menusId);
     }

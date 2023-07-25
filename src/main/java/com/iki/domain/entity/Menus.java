@@ -16,7 +16,7 @@ public class Menus {
     private Long menusId;
 
     @Column
-    private String menuCategory;
+    private String menusCategory;
 
     @ManyToOne
     @JoinColumn(name = "ownerId")
@@ -35,15 +35,15 @@ public class Menus {
     private List<MenuOptions> menuOptionsList = new ArrayList<>();
 
     @Builder
-    public Menus(String menuCategory, String menusName, int menusPrice){
-        this.menuCategory = menuCategory;
+    public Menus(String menusCategory, String menusName, int menusPrice){
+        this.menusCategory = menusCategory;
         this.menusName = menusName;
         this.menusPrice = menusPrice;
         this.soldOut = false;
     }
 
     public Menus update(String menuCategory, String menusName, int menusPrice, boolean soldOut) {
-        this.menuCategory = menuCategory;
+        this.menusCategory = menuCategory;
         this.menusName = menusName;
         this.menusPrice = menusPrice;
         this.soldOut = soldOut;
