@@ -7,6 +7,7 @@ import com.iki.domain.entity.*;
 import com.iki.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class CartService {
     }
 
     // 메뉴 클릭할 때마다 호출된다.
+    @Transactional
     public CartResponseDto save(CartSaveRequestDto requestDto) {
         Cart cart;
         OrderUsers orderUsers;

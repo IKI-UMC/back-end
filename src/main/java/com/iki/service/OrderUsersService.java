@@ -5,6 +5,7 @@ import com.iki.domain.entity.OrderUsers;
 import com.iki.repository.OrderUsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -17,6 +18,7 @@ public class OrderUsersService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 고객이 존재하지 않습니다. ORDER_USERS=" + orderUsersId));
     }
 
+    @Transactional
     public OrderUsers save(Cart cart) {
         OrderUsers orderUsers = OrderUsers.builder()
                 .cart(cart)

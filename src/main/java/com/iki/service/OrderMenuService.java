@@ -6,6 +6,7 @@ import com.iki.repository.MenusRepository;
 import com.iki.repository.OrderMenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -25,6 +26,7 @@ public class OrderMenuService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 메뉴 옵션이 없습니다. MENU_OPTIONS_ID=" + menuOptionsId));
     }
 
+    @Transactional
     public OrderMenu getOrderMenu(Long menusId, String menuOptions, Cart cart) {
         Menus menus = findMenus(menusId);
 
