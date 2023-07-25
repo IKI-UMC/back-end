@@ -35,7 +35,7 @@ public class Cart {
     }
 
     public void addAmount(int amount) {
-        this.totalAmount -= amount;
+        this.totalAmount += amount;
     }
 
     public void addPrice(int price) {
