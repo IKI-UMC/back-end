@@ -86,6 +86,15 @@ public class OrderMenuService {
         return getCartResponseDto(orderUsersId);
     }
 
+    @Transactional
+    public CartResponseDto delete(Long orderUsersId, Long orderMenuId) {
+        OrderMenu orderMenu = findOrderMenu(orderMenuId);
+
+        orderMenuRepository.delete(orderMenu);
+
+        return getCartResponseDto(orderUsersId);
+    }
+
     public CartResponseDto getCartResponseDto(Long orderUsersId) {
         OrderUsers users = findOrderUsers(orderUsersId);
         Cart cart = users.getCart();

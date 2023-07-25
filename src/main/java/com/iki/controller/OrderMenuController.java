@@ -5,6 +5,7 @@ import com.iki.domain.dto.Cart.CartResponseDto;
 import com.iki.service.OrderMenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +29,12 @@ public class OrderMenuController extends BaseController {
         CartResponseDto responseDto = orderMenuService.minusOrderMenu(orderUsersId, orderMenuId);
 
         return sendResponseHttpByJson(SUCCESS_CODE, "Minus menu amount", responseDto);
+    }
+
+    @DeleteMapping("/api/v1/orderMenu/{orderUsersId}/{orderMenuId}")
+    public ResponseEntity<ResponseApiMessage> deleteOrderMenu(@PathVariable Long orderUsersId, @PathVariable Long orderMenuId) {
+        CartResponseDto responseDto = orderMenuService.delete(orderUsersId, orderMenuId);
+
+        return sendResponseHttpByJson(SUCCESS_CODE, "Delete order menu", responseDto);
     }
 }
