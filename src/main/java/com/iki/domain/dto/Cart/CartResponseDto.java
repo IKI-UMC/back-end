@@ -1,6 +1,6 @@
 package com.iki.domain.dto.Cart;
 
-import com.iki.domain.dto.OrderMenuResponseDto;
+import com.iki.domain.dto.OrderMenu.OrderMenuResponseDto;
 import com.iki.domain.entity.Cart;
 import com.iki.domain.entity.OrderUsers;
 import lombok.Builder;

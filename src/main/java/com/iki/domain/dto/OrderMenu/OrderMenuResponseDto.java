@@ -1,4 +1,4 @@
-package com.iki.domain.dto;
+package com.iki.domain.dto.OrderMenu;
 
 import com.iki.domain.entity.OrderMenu;
 import lombok.Builder;
