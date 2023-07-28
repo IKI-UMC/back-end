@@ -34,7 +34,7 @@ public class CartController extends BaseController {
     }
 
     // 장바구니 닫을 때 장바구니 안에서 수정된 내용 저장하는 API
-    @PutMapping("/api/v1/cart/update")
+    @PutMapping("/api/v1/cart/")
     public ResponseEntity<ResponseApiMessage> saveCart(@RequestBody CartUpdateRequestDto requestDto) {
         CartResponseDto responseDto = cartService.update(requestDto);
 
