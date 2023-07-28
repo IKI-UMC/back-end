@@ -1,5 +1,6 @@
 package com.iki.service;
 
+import com.iki.domain.dto.OrderMenu.OrderMenuUpdateRequestDto;
 import com.iki.domain.entity.*;
 import com.iki.repository.MenuOptionsRepository;
 import com.iki.repository.MenusRepository;
@@ -58,27 +59,24 @@ public class OrderMenuService {
     }
 
     @Transactional
-    public void addOrderMenu(Long orderMenuId) {
-        OrderMenu orderMenu = findOrderMenu(orderMenuId);
+    public void update(OrderMenuUpdateRequestDto requestDto) {
+        OrderMenu orderMenu = findOrderMenu(requestDto.getOrderMenuId());
 
-        orderMenu.addAmount();
-    }
+        // 장바구니 내에서 삭제된 경우 -> 디비에서 삭제
+        if (requestDto.isDeleted()) {
+            delete(requestDto.getOrderMenuId());
+        }
 
-    @Transactional
-    public void minusOrderMenu(Long orderMenuId) {
-        OrderMenu orderMenu = findOrderMenu(orderMenuId);
-
-        orderMenu.minusAmount();
+        // 아닌 경우 수량과 가격 업데이트
+        orderMenu.update(requestDto.getOrderMenuAmount(), requestDto.getOrderMenuPrice());
     }
 
     @Transactional
     public Long delete(Long orderMenuId) {
         OrderMenu orderMenu = findOrderMenu(orderMenuId);
 
-        orderMenu.getCart().minusPrice(orderMenu.getPrice());
-        orderMenu.getCart().minusAmount(orderMenu.getAmount());
-
         orderMenuRepository.delete(orderMenu);
+        orderMenu.disjoin();
 
         return orderMenuId;
     }

@@ -34,19 +34,12 @@ public class Cart {
         this.menus.add(orderMenu);
     }
 
-    public void addAmount(int amount) {
-        this.totalAmount += amount;
+    public void update(int amount, int price) {
+        this.totalAmount = amount;
+        this.totalPrice = price;
     }
 
-    public void addPrice(int price) {
-        this.totalPrice += price;
-    }
-
-    public void minusAmount(int amount) {
-        this.totalAmount -= amount;
-    }
-
-    public void minusPrice(int price) {
-        this.totalPrice -= price;
+    public void disjoin(OrderMenu orderMenu) {
+        menus.remove(orderMenu);
     }
 }

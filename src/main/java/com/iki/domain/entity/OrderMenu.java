@@ -37,17 +37,13 @@ public class OrderMenu {
         this.cart = cart;
     }
 
-    public void addAmount() {
-        this.cart.addAmount(1);
-        this.cart.addPrice(price);
-        this.amount++;
-        this.price = price * amount;
+    public void update(int amount, int price) {
+        this.amount = amount;
+        this.price = price;
     }
 
-    public void minusAmount() {
-        this.cart.minusAmount(1);
-        this.cart.minusPrice(price);
-        this.amount--;
-        this.price = price * amount;
+    public void disjoin() {
+        this.cart.disjoin(this);
+        this.cart = null;
     }
 }

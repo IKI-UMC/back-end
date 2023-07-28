@@ -1,8 +1,11 @@
 package com.iki.service;
 
 import com.iki.domain.dto.Cart.CartResponseDto;
+import com.iki.domain.dto.Cart.CartStatusResponseDto;
 import com.iki.domain.dto.Cart.CartSaveRequestDto;
-import com.iki.domain.dto.OrderMenuResponseDto;
+import com.iki.domain.dto.Cart.CartUpdateRequestDto;
+import com.iki.domain.dto.OrderMenu.OrderMenuResponseDto;
+import com.iki.domain.dto.OrderMenu.OrderMenuUpdateRequestDto;
 import com.iki.domain.entity.*;
 import com.iki.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -20,14 +23,13 @@ public class CartService {
 
     private final OrderUsersService orderUsersService;
 
-    private final MenusRepository menusRepository;
     private final MenuOptionsRepository menuOptionsRepository;
+
     private final OrderMenuService orderMenuService;
 
-
-    private Menus findMenus(Long menusId) {
-        return menusRepository.findById(menusId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 메뉴가 없습니다. MENUS_ID=" + menusId));
+    private Cart findCart(Long cartId) {
+        return cartRepository.findById(cartId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 장바구니가 없습니다. CART_ID=" + cartId));
     }
 
     private MenuOptions findMenuOptions(Long menuOptionsId) {
@@ -43,9 +45,9 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    // 메뉴 클릭할 때마다 호출된다.
+    // 메뉴 새로 클릭할 때마다 호출된다.
     @Transactional
-    public Long save(CartSaveRequestDto requestDto) {
+    public CartResponseDto save(CartSaveRequestDto requestDto) {
         Cart cart;
         OrderUsers orderUsers;
 
@@ -62,10 +64,39 @@ public class CartService {
         OrderMenu orderMenu = orderMenuService.getOrderMenu(requestDto.getMenusId(), requestDto.getMenusOptions(), cart);
         cart.addMenus(orderMenu);
 
-        return cart.getCartId();
+        return CartResponseDto.builder()
+                .cartId(cart.getCartId())
+                .totalPrice(cart.getTotalPrice())
+                .totalAmount(cart.getTotalAmount())
+                .build();
     }
 
-    public CartResponseDto getCartResponseDto(Long orderUsersId) {
+    @Transactional
+    public CartResponseDto update(CartUpdateRequestDto requestDto) {
+        for (OrderMenuUpdateRequestDto orderMenuUpdateRequestDto : requestDto.getOrderMenuUpdateRequestDtoList()) {
+            orderMenuService.update(orderMenuUpdateRequestDto);
+        }
+
+        Cart cart = findCart(requestDto.getCartId());
+
+        int sumOfAmount = 0;
+        int sumOfPrice = 0;
+
+        for (OrderMenu orderMenu : cart.getMenus()) {
+            sumOfAmount += orderMenu.getAmount();
+            sumOfPrice += orderMenu.getPrice();
+        }
+
+        cart.update(sumOfAmount, sumOfPrice);
+
+        return CartResponseDto.builder()
+                .cartId(cart.getCartId())
+                .totalPrice(cart.getTotalPrice())
+                .totalAmount(cart.getTotalAmount())
+                .build();
+    }
+
+    public CartStatusResponseDto getCartResponseDto(Long orderUsersId) {
         OrderUsers users = findOrderUsers(orderUsersId);
         Cart cart = users.getCart();
         List<OrderMenu> menus = cart.getMenus();
@@ -82,7 +113,7 @@ public class CartService {
             menuResponseDtoList.add(responseDto);
         }
 
-        return CartResponseDto.builder()
+        return CartStatusResponseDto.builder()
                 .orderMenuResponseDtoList(menuResponseDtoList)
                 .cart(cart)
                 .users(users)
