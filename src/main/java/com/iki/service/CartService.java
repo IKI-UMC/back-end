@@ -1,5 +1,6 @@
 package com.iki.service;
 
+import com.iki.domain.dto.Cart.CartResponseDto;
 import com.iki.domain.dto.Cart.CartStatusResponseDto;
 import com.iki.domain.dto.Cart.CartSaveRequestDto;
 import com.iki.domain.dto.Cart.CartUpdateRequestDto;
@@ -46,7 +47,7 @@ public class CartService {
 
     // 메뉴 새로 클릭할 때마다 호출된다.
     @Transactional
-    public Long save(CartSaveRequestDto requestDto) {
+    public CartResponseDto save(CartSaveRequestDto requestDto) {
         Cart cart;
         OrderUsers orderUsers;
 
@@ -63,11 +64,15 @@ public class CartService {
         OrderMenu orderMenu = orderMenuService.getOrderMenu(requestDto.getMenusId(), requestDto.getMenusOptions(), cart);
         cart.addMenus(orderMenu);
 
-        return cart.getCartId();
+        return CartResponseDto.builder()
+                .cartId(cart.getCartId())
+                .totalPrice(cart.getTotalPrice())
+                .totalAmount(cart.getTotalAmount())
+                .build();
     }
 
     @Transactional
-    public Long update(CartUpdateRequestDto requestDto) {
+    public CartResponseDto update(CartUpdateRequestDto requestDto) {
         for (OrderMenuUpdateRequestDto orderMenuUpdateRequestDto : requestDto.getOrderMenuUpdateRequestDtoList()) {
             orderMenuService.update(orderMenuUpdateRequestDto);
         }
@@ -84,7 +89,11 @@ public class CartService {
 
         cart.update(sumOfAmount, sumOfPrice);
 
-        return requestDto.getCartId();
+        return CartResponseDto.builder()
+                .cartId(cart.getCartId())
+                .totalPrice(cart.getTotalPrice())
+                .totalAmount(cart.getTotalAmount())
+                .build();
     }
 
     public CartStatusResponseDto getCartResponseDto(Long orderUsersId) {

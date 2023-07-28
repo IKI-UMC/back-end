@@ -1,6 +1,7 @@
 package com.iki.controller;
 
 import com.iki.config.ResponseApiMessage;
+import com.iki.domain.dto.Cart.CartResponseDto;
 import com.iki.domain.dto.Cart.CartStatusResponseDto;
 import com.iki.domain.dto.Cart.CartSaveRequestDto;
 import com.iki.domain.dto.Cart.CartUpdateRequestDto;
@@ -19,9 +20,9 @@ public class CartController extends BaseController {
     // 메뉴 하나 저장하는 API
     @PostMapping("/api/v1/cart/")
     public ResponseEntity<ResponseApiMessage> addCart(@RequestBody CartSaveRequestDto requestDto) {
-        Long cartId = cartService.save(requestDto);
+        CartResponseDto responseDto = cartService.save(requestDto);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Add in Cart", cartId);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Add in Cart", responseDto);
     }
 
     // 장바구니 내에 담긴 메뉴 Get API
@@ -35,9 +36,9 @@ public class CartController extends BaseController {
     // 장바구니 닫을 때 장바구니 안에서 수정된 내용 저장하는 API
     @PutMapping("/api/v1/cart/update")
     public ResponseEntity<ResponseApiMessage> saveCart(@RequestBody CartUpdateRequestDto requestDto) {
-        Long cartId = cartService.update(requestDto);
+        CartResponseDto responseDto = cartService.update(requestDto);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Update Cart", cartId);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Update Cart", responseDto);
     }
 
 }
