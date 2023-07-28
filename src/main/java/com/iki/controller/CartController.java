@@ -1,7 +1,7 @@
 package com.iki.controller;
 
 import com.iki.config.ResponseApiMessage;
-import com.iki.domain.dto.Cart.CartResponseDto;
+import com.iki.domain.dto.Cart.CartStatusResponseDto;
 import com.iki.domain.dto.Cart.CartSaveRequestDto;
 import com.iki.domain.dto.Cart.CartUpdateRequestDto;
 import com.iki.service.CartService;
@@ -27,7 +27,7 @@ public class CartController extends BaseController {
     // 장바구니 내에 담긴 메뉴 Get API
     @GetMapping("/api/v1/cart/{orderUsersId}")
     public ResponseEntity<ResponseApiMessage> getCart(@PathVariable Long orderUsersId) {
-        CartResponseDto responseDto = cartService.getCartResponseDto(orderUsersId);
+        CartStatusResponseDto responseDto = cartService.getCartResponseDto(orderUsersId);
 
         return sendResponseHttpByJson(SUCCESS_CODE, "Load Cart", responseDto);
     }

@@ -1,6 +1,6 @@
 package com.iki.service;
 
-import com.iki.domain.dto.Cart.CartResponseDto;
+import com.iki.domain.dto.Cart.CartStatusResponseDto;
 import com.iki.domain.dto.Cart.CartSaveRequestDto;
 import com.iki.domain.dto.Cart.CartUpdateRequestDto;
 import com.iki.domain.dto.OrderMenu.OrderMenuResponseDto;
@@ -87,7 +87,7 @@ public class CartService {
         return requestDto.getCartId();
     }
 
-    public CartResponseDto getCartResponseDto(Long orderUsersId) {
+    public CartStatusResponseDto getCartResponseDto(Long orderUsersId) {
         OrderUsers users = findOrderUsers(orderUsersId);
         Cart cart = users.getCart();
         List<OrderMenu> menus = cart.getMenus();
@@ -104,7 +104,7 @@ public class CartService {
             menuResponseDtoList.add(responseDto);
         }
 
-        return CartResponseDto.builder()
+        return CartStatusResponseDto.builder()
                 .orderMenuResponseDtoList(menuResponseDtoList)
                 .cart(cart)
                 .users(users)
