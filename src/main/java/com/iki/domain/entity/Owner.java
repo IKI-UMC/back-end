@@ -29,6 +29,9 @@ public class Owner extends BaseEntity {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Menus> menusList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Category> categoryList = new ArrayList<>();
+
     @Column
     private String password;
 
@@ -58,6 +61,10 @@ public class Owner extends BaseEntity {
 
     public void addMenus(Menus menus) {
         this.menusList.add(menus);
+    }
+
+    public void addCategory(Category category) {
+        this.categoryList.add(category);
     }
 
 }

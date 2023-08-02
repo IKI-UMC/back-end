@@ -10,8 +10,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @RestController
 @Log4j2
@@ -24,20 +22,6 @@ public class MenuOptionsController extends BaseController {
         Long savedMenuOptionsId = menuOptionsService.save(menusId, requestDto);
 
         return sendResponseHttpByJson(SUCCESS_CODE, "Option saved", savedMenuOptionsId);
-    }
-
-    @GetMapping("api/v1/menuoptions/{menuOptionsId}")
-    public ResponseEntity<ResponseApiMessage> findById(@PathVariable Long menuOptionsId) {
-        MenuOptionsResponseDto responseDto = menuOptionsService.findById(menuOptionsId);
-
-        return sendResponseHttpByJson(SUCCESS_CODE, "Option loaded. OPTION_ID=" + menuOptionsId, responseDto);
-    }
-
-    @GetMapping("api/v1/menuoptions/all/{menusId}")
-    public ResponseEntity<ResponseApiMessage> findAllOptions(@PathVariable Long menusId) {
-        List<MenuOptionsResponseDto> responseDtoList = menuOptionsService.findAll(menusId);
-
-        return sendResponseHttpByJson(SUCCESS_CODE, "All Options loaded", responseDtoList);
     }
 
     @PutMapping("api/v1/menuoptions/{menuOptionsId}")
