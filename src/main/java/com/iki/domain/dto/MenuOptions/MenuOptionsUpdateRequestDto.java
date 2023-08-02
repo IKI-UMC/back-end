@@ -9,4 +9,5 @@ public class MenuOptionsUpdateRequestDto {
     String menuOptionsCategory;
     String menuOptionsContents;
     int menuOptionsPrice;
+    boolean mandatory;
 }

@@ -10,6 +10,7 @@ public class MenuOptionsResponseDto {
     String menuOptionsCategory;
     String menuOptionsContents;
     int menuOptionsPrice;
+    boolean mandatory;
 
     public MenuOptionsResponseDto(MenuOptions menuOptions) {
         this.menuOptionsId = menuOptions.getMenuOptionsId();
@@ -17,5 +18,6 @@ public class MenuOptionsResponseDto {
         this.menuOptionsCategory = menuOptions.getMenuOptionsCategory();
         this.menuOptionsContents = menuOptions.getMenuOptionsContents();
         this.menuOptionsPrice = menuOptions.getMenuOptionsPrice();
+        this.mandatory = menuOptions.isMandatory();
     }
 }

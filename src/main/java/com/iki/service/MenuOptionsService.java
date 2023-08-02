@@ -10,7 +10,6 @@ import com.iki.repository.MenusRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,23 +46,11 @@ public class MenuOptionsService {
         return new MenuOptionsResponseDto(menuOptions);
     }
 
-    public List<MenuOptionsResponseDto> findAll(Long menusId) {
-        List<MenuOptionsResponseDto> menuOptionsResponseDtoList = new ArrayList<>();
-        Menus menus = findMenus(menusId);
-        List<MenuOptions> menuOptionsList = menus.getMenuOptionsList();
-
-        for(MenuOptions menuOptions : menuOptionsList) {
-            menuOptionsResponseDtoList.add(new MenuOptionsResponseDto(menuOptions));
-        }
-
-        return menuOptionsResponseDtoList;
-    }
-
     @Transactional
     public MenuOptionsResponseDto update(Long menuOptionsId, MenuOptionsUpdateRequestDto requestDto) {
         MenuOptions menuOptions = findMenuOptions(menuOptionsId);
 
-        menuOptions.update(requestDto.getMenuOptionsCategory(), requestDto.getMenuOptionsContents(), requestDto.getMenuOptionsPrice());
+        menuOptions.update(requestDto.getMenuOptionsCategory(), requestDto.getMenuOptionsContents(), requestDto.getMenuOptionsPrice(), requestDto.isMandatory());
 
         return findById(menuOptionsId);
     }

@@ -24,17 +24,22 @@ public class MenuOptions {
     @Column
     private int menuOptionsPrice;
 
+    @Column
+    private boolean mandatory;
+
     @Builder
-    public MenuOptions(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
+    public MenuOptions(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice, boolean mandatory) {
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
+        this.mandatory = mandatory;
     }
 
-    public MenuOptions update(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice) {
+    public MenuOptions update(String menuOptionsCategory, String menuOptionsContents, int menuOptionsPrice, boolean mandatory) {
         this.menuOptionsCategory = menuOptionsCategory;
         this.menuOptionsContents = menuOptionsContents;
         this.menuOptionsPrice = menuOptionsPrice;
+        this.mandatory = mandatory;
 
         return this;
     }
