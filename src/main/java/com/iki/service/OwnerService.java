@@ -4,12 +4,10 @@ import com.iki.domain.dto.Owner.OwnerResponseDto;
 import com.iki.domain.dto.Owner.OwnerSaveRequestDto;
 import com.iki.domain.dto.Owner.OwnerUpdateRequestDto;
 import com.iki.domain.entity.Owner;
-import com.iki.repository.MenusRepository;
 import com.iki.repository.OwnerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
