@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MenusUpdateRequestDto {
-    String menusCategory;
     String menusName;
     int menusPrice;
     boolean soldOut;

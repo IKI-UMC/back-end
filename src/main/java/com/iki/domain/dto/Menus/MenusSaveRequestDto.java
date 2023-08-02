@@ -9,16 +9,15 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class MenusSaveRequestDto {
-    String menusCategory;
     String menusName;
     int menusPrice;
-    List<MenuOptionsSaveRequestDto> menuOptionsList;
+    boolean soldOut;
 
     public Menus toEntity() {
         return Menus.builder()
-                .menusCategory(menusCategory)
                 .menusName(menusName)
                 .menusPrice(menusPrice)
+                .soldOut(soldOut)
                 .build();
     }
 }
