@@ -1,6 +1,7 @@
 package com.iki.controller;
 
 import com.iki.config.ResponseApiMessage;
+import com.iki.domain.dto.Owner.OwnerLoginRequestDto;
 import com.iki.domain.dto.Owner.OwnerResponseDto;
 import com.iki.domain.dto.Owner.OwnerSaveRequestDto;
 import com.iki.domain.dto.Owner.OwnerUpdateRequestDto;
@@ -10,12 +11,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+// @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 @RestController
 public class OwnerController extends BaseController {
     private final static int SUCCESS_CODE = 200;
+    private final static int FAILURE_CODE = 400;
     private final OwnerService ownerService;
+
+    @PostMapping("api/v1/owner/login")
+    public ResponseEntity<ResponseApiMessage> login(@RequestBody OwnerLoginRequestDto requestDto) {
+        OwnerResponseDto responseDto;
+
+        try {
+            responseDto = ownerService.findForLogin(requestDto);
+        } catch (IllegalArgumentException exception) {
+            return sendResponseHttpByJson(FAILURE_CODE, "Failed to Login, There's no such Id=" + requestDto.getOwnerName(), -1);
+        }
+
+
+        if (responseDto == null) {
+            return sendResponseHttpByJson(FAILURE_CODE, "Failed to Login, Password is different!", -1);
+        }
+
+        return sendResponseHttpByJson(SUCCESS_CODE, "Successfully Logged in.", responseDto);
+    }
 
     @PostMapping("api/v1/owner")
     public ResponseEntity<ResponseApiMessage> save(@RequestBody OwnerSaveRequestDto requestDto) {
@@ -31,7 +51,7 @@ public class OwnerController extends BaseController {
         return sendResponseHttpByJson(SUCCESS_CODE, "Owner loaded. OWNER_ID=" + ownerId, responseDto);
     }
 
-    @GetMapping("api/v1/owner")
+    @GetMapping("api/v1/owner/all")
     public ResponseEntity<ResponseApiMessage> findAllOwner() {
         List<OwnerResponseDto> responseDtoList = ownerService.findAll();
 

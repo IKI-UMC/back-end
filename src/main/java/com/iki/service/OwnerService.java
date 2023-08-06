@@ -1,5 +1,6 @@
 package com.iki.service;
 
+import com.iki.domain.dto.Owner.OwnerLoginRequestDto;
 import com.iki.domain.dto.Owner.OwnerResponseDto;
 import com.iki.domain.dto.Owner.OwnerSaveRequestDto;
 import com.iki.domain.dto.Owner.OwnerUpdateRequestDto;
@@ -19,6 +20,17 @@ public class OwnerService {
     public Owner findOwner(Long ownerId) {
         return ownerRepository.findById(ownerId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 관리자가 없습니다. OWNER_ID=" + ownerId));
+    }
+
+    public OwnerResponseDto findForLogin(OwnerLoginRequestDto requestDto) {
+        Owner owner = ownerRepository.findByOwnerName(requestDto.getOwnerName())
+                .orElseThrow(() -> new IllegalArgumentException("해당 관리자가 없습니다. OWNER_NAME=" + requestDto.getOwnerName()));
+
+        if (owner.getPassword().equals(requestDto.getPassword())) {
+            return new OwnerResponseDto(owner);
+        }
+
+        return null;
     }
 
     @Transactional
