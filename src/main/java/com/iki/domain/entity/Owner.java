@@ -20,7 +20,7 @@ public class Owner extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ownerId; // PK
 
-    @Column
+    @Column(unique = true)
     private String ownerName; // 사장님이 로그인할 때 입력하는 ID
 
     @Column
