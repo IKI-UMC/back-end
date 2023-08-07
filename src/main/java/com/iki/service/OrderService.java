@@ -32,11 +32,11 @@ public class OrderService {
     }
 
     @Transactional
-    public Long save(OrderSaveRequestDto requestDto) {
+    public OrderResponseDto save(OrderSaveRequestDto requestDto) {
         Cart cart = findCart(requestDto.getCartId());
         Orders orders = orderRepository.save(new Orders(requestDto.isTakeOut(), cart.getTotalPrice(), cart));
 
-        return orders.getOrderId();
+        return new OrderResponseDto(orders);
     }
 
     @Transactional

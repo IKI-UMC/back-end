@@ -18,9 +18,9 @@ public class OrderController extends BaseController {
     @ResponseBody
     @PostMapping("")
     public ResponseEntity<ResponseApiMessage> save(@RequestBody OrderSaveRequestDto requestDto) {
-        Long orderId = orderService.save(requestDto);
+        OrderResponseDto responseDto = orderService.save(requestDto);
 
-        return sendResponseHttpByJson(SUCCESS_CODE, "Saved Order=" + orderId, orderId);
+        return sendResponseHttpByJson(SUCCESS_CODE, "Saved Order.", responseDto);
     }
 
     @ResponseBody
