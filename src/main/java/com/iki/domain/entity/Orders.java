@@ -15,6 +15,9 @@ public class Orders {
     private Long orderId;
 
     @Column
+    private Long orderNumber;
+
+    @Column
     private boolean takeOut;
 
     @Column
@@ -31,5 +34,10 @@ public class Orders {
         this.takeOut = takeOut;
         this.totalPrice = totalPrice;
         this.cart = cart;
+    }
+
+    @PrePersist
+    public void generateOrderNumber() {
+        this.orderNumber = OrderNumberGenerator.generateOrderNumber();
     }
 }

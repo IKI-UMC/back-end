@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class OrderResponseDto {
-    Long OrderId;
+    Long orderId;
+    Long orderNumber;
     boolean takeOut;
     int totalPrice;
 
     public OrderResponseDto(Orders orders) {
-        this.OrderId = orders.getOrderId();
+        this.orderId = orders.getOrderId();
+        this.orderNumber = orders.getOrderNumber();
         this.takeOut = orders.isTakeOut();
         this.totalPrice = orders.getTotalPrice();
     }
