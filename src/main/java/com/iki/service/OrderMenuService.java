@@ -39,7 +39,7 @@ public class OrderMenuService {
         OrderMenu orderMenu = OrderMenu.builder()
                 .cart(cart)
                 .optionsList(menuOptions)
-                .menus(menus)
+                .menusName(menus.getMenusName())
                 .price(getPrice(menus, menuOptions))
                 .build();
 

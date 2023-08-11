@@ -17,7 +17,7 @@ public class OrderMenuResponseDto {
     @Builder
     public OrderMenuResponseDto(OrderMenu orderMenu, List<String> orderMenuOptions) {
         this.orderMenuId = orderMenu.getOrderMenuId();
-        this.orderMenuName = orderMenu.getMenus().getMenusName();
+        this.orderMenuName = orderMenu.getMenusName();
         this.orderMenuAmount = orderMenu.getAmount();
         this.orderMenuPrice = orderMenu.getPrice();
         this.orderMenuOptions = orderMenuOptions;

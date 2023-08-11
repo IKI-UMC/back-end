@@ -14,9 +14,8 @@ public class OrderMenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderMenuId;
 
-    @ManyToOne
-    @JoinColumn(name = "menusId")
-    private Menus menus;
+    @Column
+    private String menusName;
 
     @ManyToOne
     @JoinColumn(name = "cartId")
@@ -29,8 +28,8 @@ public class OrderMenu {
     private int price;
 
     @Builder
-    public OrderMenu(Menus menus, String optionsList, int price, Cart cart) {
-        this.menus = menus;
+    public OrderMenu(String menusName, String optionsList, int price, Cart cart) {
+        this.menusName = menusName;
         this.optionsList = optionsList;
         this.amount = 1;
         this.price = price;
