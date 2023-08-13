@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MenusService {
     private final MenusRepository menusRepository;
-    private final OwnerRepository ownerRepository;
     private final CategoryRepository categoryRepository;
 
     public Menus findMenus(Long menuId) {

@@ -16,10 +16,6 @@ public class Menus {
     private Long menusId;
 
     @ManyToOne
-    @JoinColumn(name = "ownerId")
-    private Owner owner;
-
-    @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
 
@@ -48,10 +44,6 @@ public class Menus {
         this.soldOut = soldOut;
 
         return this;
-    }
-
-    public void addOwner(Owner owner) {
-        this.owner = owner;
     }
 
     public void addMenuOptions(MenuOptions menuOptions) {

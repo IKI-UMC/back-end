@@ -27,9 +27,6 @@ public class Owner extends BaseEntity {
     private String shopName; // 상호명
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Menus> menusList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Category> categoryList = new ArrayList<>();
 
     @Column
@@ -57,10 +54,6 @@ public class Owner extends BaseEntity {
         this.password = password;
 
         return this;
-    }
-
-    public void addMenus(Menus menus) {
-        this.menusList.add(menus);
     }
 
     public void addCategory(Category category) {
