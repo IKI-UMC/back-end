@@ -18,7 +18,7 @@ public class CartController extends BaseController {
     private final CartService cartService;
 
     // 메뉴 하나 저장하는 API
-    @PostMapping("/api/v1/cart/")
+    @PostMapping("/api/v1/cart")
     public ResponseEntity<ResponseApiMessage> addCart(@RequestBody CartSaveRequestDto requestDto) {
         CartResponseDto responseDto = cartService.save(requestDto);
 
@@ -34,7 +34,7 @@ public class CartController extends BaseController {
     }
 
     // 장바구니 닫을 때 장바구니 안에서 수정된 내용 저장하는 API
-    @PutMapping("/api/v1/cart/")
+    @PutMapping("/api/v1/cart")
     public ResponseEntity<ResponseApiMessage> saveCart(@RequestBody CartUpdateRequestDto requestDto) {
         CartResponseDto responseDto = cartService.update(requestDto);
 
