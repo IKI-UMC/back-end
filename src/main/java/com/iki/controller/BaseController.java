@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.nio.charset.StandardCharsets;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 class BaseController {
 
