@@ -84,7 +84,7 @@ public class CartService {
 
         for (OrderMenu orderMenu : cart.getMenus()) {
             sumOfAmount += orderMenu.getAmount();
-            sumOfPrice += orderMenu.getPrice();
+            sumOfPrice += orderMenu.getPrice() * orderMenu.getAmount();
         }
 
         cart.update(sumOfAmount, sumOfPrice);

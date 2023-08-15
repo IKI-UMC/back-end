@@ -36,9 +36,8 @@ public class OrderMenu {
         this.cart = cart;
     }
 
-    public void update(int amount, int price) {
+    public void update(int amount) {
         this.amount = amount;
-        this.price = price;
     }
 
     public void disjoin() {

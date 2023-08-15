@@ -67,8 +67,8 @@ public class OrderMenuService {
             delete(requestDto.getOrderMenuId());
         }
 
-        // 아닌 경우 수량과 가격 업데이트
-        orderMenu.update(requestDto.getOrderMenuAmount(), requestDto.getOrderMenuPrice());
+        // 아닌 경우 수량 업데이트
+        orderMenu.update(requestDto.getOrderMenuAmount());
     }
 
     @Transactional
