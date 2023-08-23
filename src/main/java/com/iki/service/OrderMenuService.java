@@ -48,6 +48,11 @@ public class OrderMenuService {
 
     int getPrice(Menus menus, String optionsList) {
         int price = menus.getMenusPrice();
+
+        if (optionsList.equals("")) {
+            return price;
+        }
+
         String[] options = optionsList.split(",");
 
         for (String option : options) {
