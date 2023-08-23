@@ -124,6 +124,10 @@ public class CartService {
         String[] optionsIds = options.split(",");
         List<String> optionsNames = new ArrayList<>();
 
+        if (options.equals("")) {
+            return optionsNames;
+        }
+
         for (String option : optionsIds) {
             Long optionsId = Long.parseLong(option);
             optionsNames.add(findMenuOptions(optionsId).getMenuOptionsContents());
