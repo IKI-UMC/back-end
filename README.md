@@ -1,6 +1,6 @@
 # IKI Back-end
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d2710be6-9071-410c-9f99-9f2970654ccc/Untitled.png) /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/5d6cb392-21ab-4a5f-8e25-62627a619eec)
 
 
 > 어려운 기계?🙅‍♀️ 손으로 주문하는 전자 메뉴판! 🙆‍♀️ 
@@ -24,7 +24,7 @@ https://github.com/IKI-UMC/front-end
 
 # 프로젝트 소개
 
-https://github.com/jodandan/IKI-front/assets/113495894/5b5365b0-4d06-4f3d-af9e-e18c60e749d8 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/d04e488b-2379-4b3c-a374-d567a64ca25b)
 
 <br>
 '익'숙한 '키'오스크의 앞글자를 따서 '익키'라는 이름을 사용하게 되었습니다. <br>
@@ -83,9 +83,9 @@ https://github.com/jodandan/IKI-front/assets/113495894/5b5365b0-4d06-4f3d-af9e-e
 
 ## 목차
 
-- [로그인UI](https://www.notion.so/a6b730d141f7423f8fc3bbb24fe65191?pvs=21)
-- [메인화면 UI](https://www.notion.so/a6b730d141f7423f8fc3bbb24fe65191?pvs=21)
-- [관리자화면 UI](https://www.notion.so/a6b730d141f7423f8fc3bbb24fe65191?pvs=21)
+- [로그인 UI](#로그인-UI)
+- [메인화면 UI](#메인화면-UI)
+- [관리자화면 UI](#관리자화면-UI)
 <br>
 
 ## 로그인 UI
@@ -97,11 +97,12 @@ https://github.com/jodandan/IKI-front/assets/113495894/5b5365b0-4d06-4f3d-af9e-e
 이후 진입페이지 에서는 주문 페이지와 관리자 페이지를 선택해 이동할 수 있습니다. <br>
 진입 후 로고를 여러번 눌러 페이지 간 이동이 가능합니다.<br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/06a81f6d-52e4-408d-b5bf-3a72ae3b3c58 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/e64f4b78-4141-4cb7-9b06-2bafa9530d37)
 
-https://github.com/jodandan/IKI-front/assets/113495894/6f2a0626-9e2e-428d-9ab8-db77de23cd89 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/bd16c2ee-41a1-4395-80ac-5fd855afab29)
 
-https://github.com/jodandan/IKI-front/assets/113495894/7bbd769f-8499-49a1-abef-1920682bf204 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/0a2a4bec-8f2a-49f7-ad26-c0588752f471)
+
 
 <br>
 
@@ -115,7 +116,8 @@ https://github.com/jodandan/IKI-front/assets/113495894/7bbd769f-8499-49a1-abef-1
 메뉴는 카테고리별로 나누어져 있으며 이름을 선택하면 상세 옵션 선택 창이 표시됩니다. <br>
 선택된 메뉴는 파란색으로 표시되고 하단에 총 금액이 나타납니다. <br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/224ed6aa-b33d-4cd9-9289-ab6a5536389b /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/63d69f7b-8a34-4750-ba42-8dc2aabff76a)
+
 
 <br>
 
@@ -126,7 +128,8 @@ https://github.com/jodandan/IKI-front/assets/113495894/224ed6aa-b33d-4cd9-9289-a
 메뉴의 필수 옵션과 추가 옵션을 선택할 수 있습니다. <br>
 선택을 완료하면 메뉴가 장바구니에 추가됩니다. <br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/4c431825-e7fc-4378-9374-34a113bdf15c /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/4d4f6d43-3675-4055-bd05-05144143b537)
+
 
 <br>
 
@@ -135,7 +138,8 @@ https://github.com/jodandan/IKI-front/assets/113495894/4c431825-e7fc-4378-9374-3
 하단 장바구니 열기를 누르면 현재 선택된 메뉴의 이름과 옵션, 가격, 수량이 리스트 형식으로 표시됩니다. <br>
 리스트 우측 삭제 버튼을 통해 장바구니 내 메뉴를 삭제할 수 있습니다. <br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/fbc25ce7-41b7-40e4-a313-a4348728c3a6
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/aca12caa-9913-424d-bcb3-9329c8b14a84)
+
 
 <br>
 
@@ -146,13 +150,14 @@ https://github.com/jodandan/IKI-front/assets/113495894/fbc25ce7-41b7-40e4-a313-a
 결제가 완료되면 주문 번호와 결제된 금액을 알려줍니다. <br>
 영수증을 받거나 포인트를 적립할 수 있습니다.
 
-https://github.com/jodandan/IKI-front/assets/113495894/bebd9e13-ea50-490f-ad72-e7de898169d0 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/c24e23b4-c410-495f-a209-c5e6e1bfd79e)
 
-https://github.com/jodandan/IKI-front/assets/113495894/d22741d8-e9b0-486d-95db-9af01fe4f708 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/4d1be2ce-8bbf-4163-8ad5-3fc38f212bbf)
 
-https://github.com/jodandan/IKI-front/assets/113495894/aa603a2a-497b-488d-99c7-9d4a6dd7df05 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/66ab8993-b5a5-4b8c-b15c-b2a5d3487c2d)
 
-https://github.com/jodandan/IKI-front/assets/113495894/368e7e5d-f7b1-48a1-a340-0bfc41c6502e /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/d7b3f09b-ee7f-456f-9511-5fdf19de46dc)
+
 
 <br>
 
@@ -165,9 +170,10 @@ https://github.com/jodandan/IKI-front/assets/113495894/368e7e5d-f7b1-48a1-a340-0
 메뉴 조회를 통해 메뉴 관리 메이지로 이동할 수 있습니다.<br>
 상단에 있는 추가버튼에 연결되어 있는 팝업창을 이용하여, 카테고리를 추가 할 수 있습니다.<br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/13f62e07-c2be-4c9b-987e-4de8f17fd26c /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/1951ffb5-0069-4265-81f3-f70f6cad5178)
 
-https://github.com/jodandan/IKI-front/assets/113495894/f76b5424-db7b-459d-9eb8-7ad1022b4db9 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/af2f4727-d859-456e-84d1-556a180878cf)
+
 
 <br>
 
@@ -178,9 +184,10 @@ https://github.com/jodandan/IKI-front/assets/113495894/f76b5424-db7b-459d-9eb8-7
 수정/품절관리 팝업창으로 이름과 가격을 입력할 수 있고, 품절 여부 체크 또한 가능합니다.<br>
 <br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/202cb815-55bf-4c83-89e2-f26d6deeee5b /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/9eba9f48-27ce-4542-97c0-e6cccb08fe8c)
 
-https://github.com/jodandan/IKI-front/assets/113495894/1568cfbd-a8a4-41b7-89f3-959765c91039 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/35b7744d-1a6a-4c0b-8bcd-f263bffc0825)
+
 
 <br>
 
@@ -191,9 +198,10 @@ https://github.com/jodandan/IKI-front/assets/113495894/1568cfbd-a8a4-41b7-89f3-9
 수정하기 팝업을 통해 옵션명과 가격을 입력 및 수정할 수 있습니다. <br>
 필수 카테고리에 체크하면 필수 옵션으로 등록됩니다.<br>
 
-https://github.com/jodandan/IKI-front/assets/113495894/b4463b03-7942-4899-ae7a-572342670d79 /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/2ab271ff-8a85-425f-98d2-a52283de9d3a)
 
-https://github.com/jodandan/IKI-front/assets/113495894/6c38fb99-7103-48ee-ad28-6e6aef808afa /이미지
+![image](https://github.com/IKI-UMC/back-end/assets/89457065/3f3e2379-7f06-457e-8b77-cb0c78feac35)
+
 
 <br>
 
