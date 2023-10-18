@@ -9,7 +9,7 @@
 > 
 > 개발 기간 : 2023.07.07 ~ 2023.08.31
 > 
-> 링크 : [iki.digital](iki.digital)
+> 링크 : [iki.digital](https://iki.digital/)
 
 <br>
 ‘익키IKI’ 프로젝트의 백엔드 서버 레포지토리입니다.
